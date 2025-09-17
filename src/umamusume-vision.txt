@@ -1,0 +1,19 @@
+Need to get the event title, event type, and uma name into an object so
+I can use it for tool calls. GET THE FUCKING TEXT FROM THE IMAGE PROVIDED!!
+DO NOT MAKE SHIT UP!
+
+There are 3 Event Types, Trainee, Scenario, & Support.
+Make sure to include punctuation and symbols in the title if it is there.
+Keep the original title, do not modify the title name.
+
+You will find the Event Type above the Event Title.
+Trainee Events Have Pink Backgrounds.
+Support Events Have Blue Backgrounds.
+Scenario Events I think have Green Backgrounds.
+
+Events type/title will not have transparent backgrounds.
+Must have a Pink, Blue, or Green Background.
+
+"Junior Year Pre-Debut" and Month names are not event titles!
+
+Current Umamusume: "{umamusume}"

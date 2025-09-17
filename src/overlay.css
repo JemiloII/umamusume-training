@@ -1,0 +1,107 @@
+@import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@100;300;400;500;700;800;900&display=swap');
+
+body {
+  margin: 0;
+  background: transparent;
+  overflow: hidden;
+}
+
+.overlay {
+  position: fixed;
+  border: 2px solid red;
+  box-sizing: border-box;
+  z-index: 1;
+}
+
+.info {
+  position: fixed;
+  bottom: 10px;
+  left: 12px;
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 5px;
+  font-family: 'M PLUS Rounded 1c', serif;
+  font-size: 12px;
+  border-radius: 3px;
+}
+
+.info.hidden {
+  display: none;
+}
+
+.choice_values {
+  position: fixed;
+  font-family: 'M PLUS Rounded 1c', serif;
+  font-weight: 800;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: flex-start;
+  margin: 0;
+  padding: 0;
+}
+
+.blur {
+  filter: blur(4px) saturate(0.9) opacity(0.6) brightness(1.1);
+}
+
+.choice_header {
+  font-family: 'M PLUS Rounded 1c', serif;
+  font-weight: 700;
+  background: url('../images/umamusume/ui/career_profile_title_bar.png') no-repeat;
+  background-size: 100% 100%;
+  display: flex;
+  align-items: center;
+  padding-left: 8px;
+  color: white;
+  font-size: 0.85vw;
+  line-height: 1.2;
+  width: 97%;
+  aspect-ratio: 12 / 1;
+}
+
+.choice_item {
+  position: relative;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 8%;
+  padding-right: 8%;
+  color: #6D3A22;
+  font-size: 1.1vw;
+  font-weight: 800;
+  box-sizing: border-box;
+  width: 100%;
+  aspect-ratio: 7.02 / 1;
+}
+
+.choice_instruction {
+  padding: 20px;
+  text-align: center;
+  color: #6D3A22;
+  font-size: 1.4vw;
+  font-family: 'M PLUS Rounded 1c', serif;
+  font-weight: 800;
+  margin: 10px;
+}
+
+.choice_green {
+  background-image: url('../images/umamusume/ui/choice_green.png');
+}
+
+.choice_yellow {
+  background-image: url('../images/umamusume/ui/choice_yellow.png');
+}
+
+.choice_pink {
+  background-image: url('../images/umamusume/ui/choice_pink.png');
+}
+
+.choice_failure {
+  color: #FF6600;
+  font-size: 1.1vw;
+  margin-top: 5px;
+}

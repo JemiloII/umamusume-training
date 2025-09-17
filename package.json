@@ -1,0 +1,30 @@
+{
+  "name": "umamusume-training",
+  "version": "1.0.0",
+  "description": "Umamusume Training Overlay Assistant",
+  "main": "dist/index.js",
+  "scripts": {
+    "predev": "rimraf dist && copyfiles -u 0 -e **/*.ts images/umamusume/ui/* src/* dist/",
+    "dev": "tsc && electron ./dist/index.js"
+  },
+  "keywords": [],
+  "author": "Brian Jemilo II",
+  "type": "module",
+  "license": "private",
+  "dependencies": {
+    "node-global-key-listener": "^0.3.0",
+    "node-html-parser": "^7.0.1",
+    "node-screenshots": "^0.2.1",
+    "sharp": "^0.32.6",
+    "tesseract.js": "^6.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "^24.3.0",
+    "copyfiles": "^2.4.1",
+    "cross-env": "^10.0.0",
+    "electron": "^38.1.0",
+    "rimraf": "^6.0.1",
+    "tsx": "^4.20.4",
+    "typescript": "^5.9.2"
+  }
+}

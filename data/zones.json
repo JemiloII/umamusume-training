@@ -1,0 +1,37 @@
+[
+  {
+    "name": "career_profile_icon",
+    "left": 0.9125,
+    "width": 0.0845,
+    "top": 0.43,
+    "bottom": 0.428
+  },
+  {
+    "name": "choice_values",
+    "left": 0.5545,
+    "width": 0.3,
+    "top": 0.69,
+    "bottom": 0.0175
+  },
+  {
+    "name": "event_title",
+    "left": 0.1265,
+    "width": 0.16,
+    "top": 0.181,
+    "bottom": 0.77
+  },
+  {
+    "name": "event_type",
+    "left": 0.1265,
+    "width": 0.125,
+    "top": 0.16,
+    "bottom": 0.8175
+  },
+  {
+    "name": "umamusume",
+    "left": 0.62,
+    "width": 0.2,
+    "top": 0.2,
+    "bottom": 0.765,
+  }
+]
