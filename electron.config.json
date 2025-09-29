@@ -1,0 +1,34 @@
+{
+  "appId": "umamusume-training",
+  "productName": "Umamusume Training",
+  "directories": { "output": "build" },
+  "files": [
+    "dist/**/*",
+    "node_modules/**/*",
+    "package.json",
+    "!**/node_modules/node-global-key-listener/bin/MacKeyServer*",
+    "!**/node_modules/node-global-key-listener/bin/LinuxKeyServer*",
+    "!**/node_modules/node-screenshots-darwin-*",
+    "!**/node_modules/node-screenshots-linux-*",
+    "!**/node_modules/**/prebuilds/**/darwin-*",
+    "!**/node_modules/**/prebuilds/**/linux-*"
+  ],
+  "asar": true,
+  "asarUnpack": [
+    "**/*.node",
+    "node_modules/sharp/**",
+    "node_modules/node-screenshots-*/**"
+  ],
+  "npmRebuild": true,
+  "buildDependenciesFromSource": false,
+  "win": {
+    "target": [
+      { "target": "portable", "arch": ["x64"] }
+    ],
+    "icon": "images/haru.ico",
+    "executableName": "UmamusumeTraining",
+    "artifactName": "UmamusumeTraining.exe",
+    "signAndEditExecutable": false
+  },
+  "icon": "images/haru.ico"
+}

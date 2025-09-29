@@ -40798,5 +40798,106 @@
         "failure": []
       }
     ]
+  },
+  {
+    "index": 1396,
+    "uma": "All Umamusume",
+    "alias": "",
+    "type": "Trainee",
+    "title": "Just an Acupuncturist, No Worries! ☆",
+    "archive_id": "541379",
+    "choices": [
+      {
+        "choice": 1,
+        "text": "Activate the Strength Chakra",
+        "rate": "20%",
+        "success": [
+          "・All Stats +20"
+        ],
+        "failure": [
+          "・Mood down",
+          "・All Stats -15",
+          "・Get Night Owl status effect"
+        ]
+      },
+      {
+        "choice": 2,
+        "text": "Activate the Winning Chakra",
+        "rate": "60%",
+        "success": [
+          "・Get Corner Recovery ⭕",
+          "・Get Straightaway Recovery ⭕"
+        ],
+        "failure": [
+          "・Mood down",
+          "・Energy -20"
+        ]
+      },
+      {
+        "choice": 3,
+        "text": "Activate the Health Chakra",
+        "rate": "80%",
+        "success": [
+          "・Max Energy +12",
+          "・Energy +40",
+          "・Cure Negative Effects"
+        ],
+        "failure": [
+          "・Energy -20",
+          "・Mood down",
+          "・Get Practice Poor status effect"
+        ]
+      },
+      {
+        "choice": 4,
+        "text": "Activate the Charm Chakra",
+        "rate": "80%",
+        "success": [
+          "・Energy +20",
+          "・Mood up",
+          "・Get Charming ⭕ status effect"
+        ],
+        "failure": [
+          "・Energy -10",
+          "・Mood down"
+        ]
+      },
+      {
+        "choice": 5,
+        "text": "This is too sketchy. Let's quit while we still can.",
+        "rate": "100%",
+        "success": [
+          "・Energy +10"
+        ],
+        "failure": []
+      }
+    ]
+  },
+  {
+    "index": 1397,
+    "uma": "All Umamusume",
+    "alias": "",
+    "type": "Trainee",
+    "title": "Extra Training (Gold Ship)",
+    "archive_id": "543447",
+    "choices": [
+      {
+        "choice": 1,
+        "text": "True, I can't fall behind the times.",
+        "success": [
+          "・-5 Energy",
+          "・Last trained Stat +5"
+        ],
+        "failure": []
+      },
+      {
+        "choice": 2,
+        "text": "I know \"CD\" is currently trending!",
+        "success": [
+          "・5 Energy"
+        ],
+        "failure": []
+      }
+    ]
   }
 ]

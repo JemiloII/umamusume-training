@@ -4,27 +4,32 @@
   "description": "Umamusume Training Overlay Assistant",
   "main": "dist/index.js",
   "scripts": {
-    "predev": "rimraf dist && copyfiles -u 0 -e **/*.ts images/umamusume/ui/* src/* dist/",
-    "dev": "tsc && electron ./dist/index.js"
+    "compile": "rimraf build dist && copyfiles -u 0 -e **/*.ts images/**/* src/* dist/ && tsc",
+    "dev": "npm run compile && electron ./dist/index.js",
+    "build": "npm run compile && electron-builder --config electron.config.json --win portable"
   },
-  "keywords": [],
+  "keywords": [
+    "umamusume", "pretty", "derby", "anime", "horse", "haru", "urara", "trainer", "training", "assistant", "overlay"
+  ],
   "author": "Brian Jemilo II",
   "type": "module",
   "license": "private",
   "dependencies": {
-    "node-global-key-listener": "^0.3.0",
-    "node-html-parser": "^7.0.1",
-    "node-screenshots": "^0.2.1",
-    "sharp": "^0.32.6",
-    "tesseract.js": "^6.0.1"
+    "node-global-key-listener": "0.3.0",
+    "node-html-parser": "7.0.1",
+    "node-screenshots": "0.2.1",
+    "node-screenshots-win32-x64-msvc": "0.2.1",
+    "sharp": "0.32.6",
+    "tesseract.js": "6.0.1"
   },
   "devDependencies": {
-    "@types/node": "^24.3.0",
-    "copyfiles": "^2.4.1",
-    "cross-env": "^10.0.0",
-    "electron": "^38.1.0",
-    "rimraf": "^6.0.1",
-    "tsx": "^4.20.4",
-    "typescript": "^5.9.2"
+    "@types/node": "24.5.1",
+    "copyfiles": "2.4.1",
+    "cross-env": "10.0.0",
+    "electron": "38.1.1",
+    "electron-builder": "26.0.12",
+    "rimraf": "6.0.1",
+    "tsx": "4.20.5",
+    "typescript": "5.9.2"
   }
 }

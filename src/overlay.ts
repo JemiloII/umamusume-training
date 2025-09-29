@@ -1,11 +1,11 @@
-import path from 'path';
+import { dirname, join } from 'path';
 import fs from 'fs/promises';
 import { fileURLToPath } from 'url';
 import { BrowserWindow } from 'electron';
 import config from '../config.json' with { type: 'json' };
 
 const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const __dirname = dirname(__filename);
 
 interface Choice {
   choice: number;
@@ -60,6 +60,8 @@ class OverlayManager {
 
   async createOverlayWindow(windowInfo: WindowInfo): Promise<BrowserWindow> {
     const win = new BrowserWindow({
+      title: 'Umamusume Training',
+      icon: join(__dirname, '../images/haru.ico'),
       x: windowInfo.window.x,
       y: windowInfo.window.y,
       width: windowInfo.window.width,
@@ -129,7 +131,7 @@ class OverlayManager {
             height: ${headerHeight}px !important;
         }`;
 
-    const templatePath = path.join(__dirname, 'overlay-template.html');
+    const templatePath = join(__dirname, 'overlay-template.html');
     let template = await fs.readFile(templatePath, 'utf8');
 
     const choiceValuesStyle = showChoiceValues ? '' : ' style="display: none;"';
@@ -156,7 +158,7 @@ class OverlayManager {
     this.window = await this.createOverlayWindow(windowInfo);
     const html = await this.generateHTML(windowInfo);
 
-    const htmlPath = path.join(__dirname, 'overlay.html');
+    const htmlPath = join(__dirname, 'overlay.html');
     await fs.writeFile(htmlPath, html);
     await new Promise(resolve => setTimeout(resolve, 10));
 
@@ -174,7 +176,7 @@ class OverlayManager {
     this.window.setSize(windowInfo.window.width, windowInfo.window.height);
 
     const html = await this.generateHTML(windowInfo);
-    const htmlPath = path.join(__dirname, 'overlay.html');
+    const htmlPath = join(__dirname, 'overlay.html');
     await fs.writeFile(htmlPath, html);
     await this.window.loadFile(htmlPath);
   }
@@ -189,7 +191,7 @@ class OverlayManager {
 
     try {
       const html = await this.generateHTML(this.currentWindowInfo);
-      const htmlPath = path.join(__dirname, 'overlay.html');
+      const htmlPath = join(__dirname, 'overlay.html');
       await fs.writeFile(htmlPath, html);
       await this.window.loadFile(htmlPath);
 
@@ -208,7 +210,7 @@ class OverlayManager {
 
     try {
       const html = await this.generateHTML(this.currentWindowInfo, blur, visible);
-      const htmlPath = path.join(__dirname, 'overlay.html');
+      const htmlPath = join(__dirname, 'overlay.html');
       await fs.writeFile(htmlPath, html);
       await this.window.loadFile(htmlPath);
 

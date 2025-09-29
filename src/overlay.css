@@ -4,6 +4,7 @@ body {
   margin: 0;
   background: transparent;
   overflow: hidden;
+  pointer-events: none;
 }
 
 .overlay {
@@ -23,6 +24,7 @@ body {
   font-family: 'M PLUS Rounded 1c', serif;
   font-size: 12px;
   border-radius: 3px;
+  pointer-events: none;
 }
 
 .info.hidden {
@@ -40,6 +42,7 @@ body {
   justify-content: flex-start;
   margin: 0;
   padding: 0;
+  pointer-events: auto;
 }
 
 .blur {

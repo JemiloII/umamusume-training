@@ -1,5 +1,5 @@
 import { app } from 'electron';
-import { CaptureManager, CaptureResult } from './src/capture.js';
+import { CaptureManager } from './src/capture.js';
 import { OverlayManager } from './src/overlay.js';
 import { WindowTracker, WindowInfo } from './src/window.js';
 import { AnalysisManager, Choice } from './src/analysis.js';
@@ -60,7 +60,7 @@ class App {
     this.windowTracker.on('menu', ({ blur }: { blur: boolean }) =>
       this.overlayManager.setChoiceValuesVisibility({ blur }));
 
-    this.captureManager.on('captureRequested', (result: CaptureResult) => {
+    this.captureManager.on('captureRequested', () => {
       console.log('Capture completed, starting analysis...');
       this.analysisManager.analyzeEvent();
     });
@@ -92,11 +92,20 @@ class App {
   }
 }
 
-async function createApp(): Promise<void> {
-  app.commandLine.appendSwitch('no-deprecation');
-  new App();
+let appInstance: App | undefined;
+
+function createApp(): void {
+  appInstance = new App();
+
+  app.on('before-quit', () => {
+    if (appInstance?.overlayManager.window) {
+      appInstance.overlayManager.window.destroy();
+      appInstance.overlayManager.window = null as any;
+    }
+  });
 }
 
+app.setAppUserModelId("umamusume-training");
 app.on('ready', createApp);
 app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {

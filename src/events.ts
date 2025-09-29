@@ -120,7 +120,10 @@ async function findEvent({ title, type, uma }: FindEventInput): Promise<Choice[]
     if (type.toLowerCase() !== 'trainee') {
       events = events.filter(event => event.type.toLowerCase() === type.toLowerCase());
     } else {
-      events = events.filter(event => event.uma.toLowerCase() === uma.toLowerCase());
+      events = events.filter(event => {
+        const eventUma = event.uma.toLowerCase();
+        return eventUma === uma.toLowerCase() || eventUma === 'all umamusume';
+      });
     }
 
     const { archive_id, index, choices }: UmamusumeEvent = events.find((event) => {
