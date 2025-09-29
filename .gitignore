@@ -7,3 +7,4 @@ dist/
 .env
 .crush*
 CRUSH.md
+memory-bank/
