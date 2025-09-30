@@ -1,14 +1,20 @@
-import { app } from 'electron';
+import { app, Tray, Menu, nativeImage } from 'electron';
+import { join, dirname } from 'path';
+import { fileURLToPath } from 'url';
 import { CaptureManager } from './src/capture.js';
 import { OverlayManager } from './src/overlay.js';
 import { WindowTracker, WindowInfo } from './src/window.js';
 import { AnalysisManager, Choice } from './src/analysis.js';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 class App {
   windowTracker: WindowTracker;
   overlayManager: OverlayManager;
   captureManager: CaptureManager;
   analysisManager: AnalysisManager;
+  tray: Tray | null = null;
 
   constructor() {
     this.windowTracker = new WindowTracker();
@@ -16,9 +22,53 @@ class App {
     this.captureManager = new CaptureManager();
     this.analysisManager = new AnalysisManager(this.windowTracker, this.captureManager);
 
+    this.setupTray();
     this.setupEventListeners();
     console.log('Starting application...');
     console.log('All systems active');
+  }
+
+  setupTray(): void {
+    const iconPath = join(__dirname, 'images', 'haru.ico');
+    this.tray = new Tray(nativeImage.createFromPath(iconPath));
+
+    const contextMenu = Menu.buildFromTemplate([
+      {
+        label: 'Show Overlay',
+        click: () => {
+          this.overlayManager.showOverlayWindow();
+        }
+      },
+      {
+        label: 'Hide Overlay',
+        click: () => {
+          this.overlayManager.hideOverlay();
+        }
+      },
+      { type: 'separator' },
+      {
+        label: 'Quit',
+        click: () => {
+          this.cleanup();
+          app.quit();
+        }
+      }
+    ]);
+
+    this.tray.setToolTip('Umamusume Training Assistant');
+    this.tray.setContextMenu(contextMenu);
+
+    this.tray.on('click', () => {
+      this.overlayManager.showOverlayWindow();
+    });
+  }
+
+  cleanup(): void {
+    this.overlayManager.destroy();
+    if (this.tray) {
+      this.tray.destroy();
+      this.tray = null;
+    }
   }
 
   setupEventListeners(): void {
@@ -98,23 +148,30 @@ function createApp(): void {
   appInstance = new App();
 
   app.on('before-quit', () => {
-    if (appInstance?.overlayManager.window) {
-      appInstance.overlayManager.window.destroy();
-      appInstance.overlayManager.window = null as any;
+    if (appInstance) {
+      appInstance.cleanup();
     }
   });
 }
 
+// Disable hardware acceleration for better overlay performance
+app.disableHardwareAcceleration();
+
 app.setAppUserModelId("umamusume-training");
-app.on('ready', createApp);
+app.on('ready', () => {
+  setTimeout(
+    createApp,
+    process.platform === 'linux' ? 1000 : 0 // https://github.com/electron/electron/issues/16809
+  );
+});
+
+// Don't quit when all windows are closed - keep running in tray
 app.on('window-all-closed', () => {
-  if (process.platform !== 'darwin') {
-    app.quit();
-  }
+  // Do nothing - keep app running in tray
 });
 
 app.on('activate', () => {
-  if (process.platform === 'darwin') {
+  if (process.platform === 'darwin' && !appInstance) {
     createApp();
   }
 });

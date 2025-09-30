@@ -6,4 +6,7 @@ build/
 dist/
 .env
 .crush*
+.cline*
 CRUSH.md
+CLINE.md
+eng.traineddata
